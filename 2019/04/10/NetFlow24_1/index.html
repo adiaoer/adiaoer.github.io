@@ -96,24 +96,27 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="这里是网络流24题建图的方法（题目来自洛谷）包含：P1251, P2754, P2756, P2761, P2762">
+<meta name="keywords" content="Dinic,SPFA,MCMF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/03/24/hello-world/index.html">
+<meta property="og:title" content="网络流24题(Part.1)">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/NetFlow24_1/index.html">
 <meta property="og:site_name" content="Adiaoer">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="这里是网络流24题建图的方法（题目来自洛谷）包含：P1251, P2754, P2756, P2761, P2762">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-24T11:33:48.102Z">
+<meta property="og:image" content="http://yoursite.com/images/网络流24题/21712.png">
+<meta property="og:updated_time" content="2019-04-10T13:31:22.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="网络流24题(Part.1)">
+<meta name="twitter:description" content="这里是网络流24题建图的方法（题目来自洛谷）包含：P1251, P2754, P2756, P2761, P2762">
+<meta name="twitter:image" content="http://yoursite.com/images/网络流24题/21712.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/24/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/10/NetFlow24_1/">
 
 
 
@@ -123,7 +126,7 @@
   };
 </script>
 
-  <title>Hello World | Adiaoer</title>
+  <title>网络流24题(Part.1) | Adiaoer</title>
   
 
 
@@ -336,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/NetFlow24_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Adiaoer">
@@ -353,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">网络流24题(Part.1)
 
               
             
@@ -379,12 +382,34 @@
                 
               
 
-              <time title="创建时间：2019-03-24 19:33:48" itemprop="dateCreated datePublished" datetime="2019-03-24T19:33:48+08:00">2019-03-24</time>
+              <time title="创建时间：2019-04-10 21:18:20 / 修改时间：21:31:22" itemprop="dateCreated datePublished" datetime="2019-04-10T21:18:20+08:00">2019-04-10</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -421,15 +446,44 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>这里是网络流24题建图的方法（题目来自洛谷）<br>包含：P1251, P2754, P2756, P2761, P2762</p>
+<a id="more"></a>
+<h1 id="网络流24题-Part-1"><a href="#网络流24题-Part-1" class="headerlink" title="网络流24题(Part.1)"></a>网络流24题(Part.1)</h1><h2 id="洛谷P1251"><a href="#洛谷P1251" class="headerlink" title="洛谷P1251"></a><a href="https://www.luogu.org/problemnew/show/P1251" target="_blank" rel="noopener">洛谷P1251</a></h2><h3 id="此题为MCMF"><a href="#此题为MCMF" class="headerlink" title="此题为MCMF"></a>此题为MCMF</h3><p>首先，将一天拆成晚上和早上，每天晚上会受到脏餐巾（来源：当天早上用完的餐巾，在这道题中可理解为从原点获得），每天早上又有干净的餐巾（来源：购买、快洗店、慢洗店。）</p>
+<ol>
+<li>从原点向每一天晚上连一条流量为当天所用餐巾x，费用为0的边，表示每天晚上从起点获得x条脏餐巾。</li>
+<li>从每一天早上向汇点连一条流量为当天所用餐巾x，费用为0的边，每天白天,表示向汇点提供x条干净的餐巾,流满时表示第i天的餐巾够用。</li>
+<li>从每一天晚上向第二天晚上连一条流量为INF，费用为0的边，表示每天晚上可以将脏餐巾留到第二天晚上（注意不是早上，因为脏餐巾在早上不可以使用）。</li>
+<li>从每一天晚上向这一天+快洗所用天数$t_1$的那一天早上连一条流量为INF，费用为快洗所用钱数的边，表示每天晚上可以送去快洗部,在地$i+t_1$天早上收到餐巾。</li>
+<li>同理，从每一天晚上向这一天+慢洗所用天数$t_2$的那一天早上连一条流量为INF，费用为慢洗所用钱数的边，表示每天晚上可以送去慢洗部,在地$i+t_2$天早上收到餐巾 。</li>
+<li>从起点向每一天早上连一条流量为INF，费用为购买餐巾所用钱数的边，表示每天早上可以购买餐巾。</li>
+</ol>
+<h2 id="洛谷P2754"><a href="#洛谷P2754" class="headerlink" title="洛谷P2754"></a><a href="https://www.luogu.org/problemnew/show/P2754" target="_blank" rel="noopener">洛谷P2754</a></h2><h3 id="此题为MaxFlow"><a href="#此题为MaxFlow" class="headerlink" title="此题为MaxFlow"></a>此题为MaxFlow</h3><p>将每一个星球按时间拆点，不妨将第i个星球在第j时刻的状态表示为$(i, j)$，$path_{i, j}$表示第i艘飞船当前在第j站，第i艘飞船的运行周期为$t_i$。则有：</p>
+<ol>
+<li>首先判断时候存在解（并查集），若不存在，判0结束。否则执行下面的步骤：</li>
+<li>由于每个星球上的人有两个选择：要么上飞船（如果有），要么等一个单位的时间。所以建两条边$(path_{i, j}, j) \rightarrow (path_{i, (j+1) \% t_i}, j+1)$，$(i, j) \rightarrow (i, j+1)$。</li>
+<li>在当前时刻j，建立一条从源点到起点（地球）的边，即：$Source\rightarrow (earth, j)$</li>
+<li>在当前时刻j，建立一条从终点（月球）到汇点的边，即：$(moon, j)\rightarrow Sink$</li>
+<li>一旦此网络的流量等于k，结束加边过程，给出答案。</li>
+</ol>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ol>
+<li>这题需要一边加边一边跑最大流，即：每增加一次当前时刻，加边，然后跑最大流</li>
+<li>每次跑最大流时，在上次残量网络的基础上跑（<strong>千万不要清空残量网络</strong>）</li>
+</ol>
+<h2 id="洛谷P2756"><a href="#洛谷P2756" class="headerlink" title="洛谷P2756"></a><a href="https://www.luogu.org/problemnew/show/P2756" target="_blank" rel="noopener">洛谷P2756</a></h2><h3 id="此题为MaxFlow-二分图"><a href="#此题为MaxFlow-二分图" class="headerlink" title="此题为MaxFlow(二分图)"></a>此题为MaxFlow(二分图)</h3><ol>
+<li>整一个超级源点和超级汇点，超级源点连左集中所有节点，右集所有节点连向超级汇点；然后就按题目给的边连上就行。</li>
+<li>跑Dinic，完了以后检索边集，发现有流量的边就输出。（注意下不要把含有源点和汇点的输出来）</li>
+</ol>
+<h2 id="洛谷P2761"><a href="#洛谷P2761" class="headerlink" title="洛谷P2761"></a><a href="https://www.luogu.org/problemnew/show/P2761" target="_blank" rel="noopener">洛谷P2761</a></h2><h3 id="此题为状压、SPFA-什么鬼"><a href="#此题为状压、SPFA-什么鬼" class="headerlink" title="此题为状压、SPFA(什么鬼?)"></a>此题为状压、SPFA<del>(什么鬼?)</del></h3><ol>
+<li>可以将每个状态用一个整数表示$(n \leq 20)$</li>
+<li>没有必要把所有边全部存下来，只需要在跑SPFA时确定是否能够转移即可。</li>
+</ol>
+<h2 id="洛谷P2762"><a href="#洛谷P2762" class="headerlink" title="洛谷P2762"></a><a href="https://www.luogu.org/problemnew/show/P2762" target="_blank" rel="noopener">洛谷P2762</a></h2><h3 id="此题为最小割-最大流定理"><a href="#此题为最小割-最大流定理" class="headerlink" title="此题为最小割-最大流定理"></a>此题为最小割-最大流定理</h3><ol>
+<li>建边：$S \rightarrow E_i, E_i \rightarrow I_j, I_j \rightarrow T$(其中S为源点，$E_i$为第i个实验，$I_i$为第i件设备)</li>
+</ol>
+<p>建好的图大概是这样：（图片由<a href="https://www.luogu.org/space/show?uid=52915" target="_blank" rel="noopener">SSL_XXY_BlackCloud</a>$julao$制作）<br><img src="/images/网络流24题/21712.png" alt="img"></p>
+<ol start="2">
+<li>最终答案为最后一次BFS是仍然能够访问到的点（其他节点都被割掉了）</li>
+</ol>
 
       
     </div>
@@ -451,6 +505,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Dinic/" rel="tag"># Dinic</a>
+          
+            <a href="/tags/SPFA/" rel="tag"># SPFA</a>
+          
+            <a href="/tags/MCMF/" rel="tag"># MCMF</a>
+          
+        </div>
+      
 
       
       
@@ -460,15 +524,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/04/Miller-Rabin&Pollard-Rho/" rel="next" title="Miller-Rabin & Pollard-Rho">
+                <i class="fa fa-chevron-left"></i> Miller-Rabin & Pollard-Rho
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/24/ODT/" rel="prev" title="老司机树">
-                老司机树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -631,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络流24题-Part-1"><span class="nav-number">1.</span> <span class="nav-text">网络流24题(Part.1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P1251"><span class="nav-number">1.1.</span> <span class="nav-text">洛谷P1251</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#此题为MCMF"><span class="nav-number">1.1.1.</span> <span class="nav-text">此题为MCMF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P2754"><span class="nav-number">1.2.</span> <span class="nav-text">洛谷P2754</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#此题为MaxFlow"><span class="nav-number">1.2.1.</span> <span class="nav-text">此题为MaxFlow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">1.2.2.</span> <span class="nav-text">Tips</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P2756"><span class="nav-number">1.3.</span> <span class="nav-text">洛谷P2756</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#此题为MaxFlow-二分图"><span class="nav-number">1.3.1.</span> <span class="nav-text">此题为MaxFlow(二分图)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P2761"><span class="nav-number">1.4.</span> <span class="nav-text">洛谷P2761</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#此题为状压、SPFA-什么鬼"><span class="nav-number">1.4.1.</span> <span class="nav-text">此题为状压、SPFA(什么鬼?)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P2762"><span class="nav-number">1.5.</span> <span class="nav-text">洛谷P2762</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#此题为最小割-最大流定理"><span class="nav-number">1.5.1.</span> <span class="nav-text">此题为最小割-最大流定理</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
