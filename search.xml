@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[0/1分数规划]]></title>
+    <url>%2F2019%2F04%2F15%2F01%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92%2F</url>
+    <content type="text"><![CDATA[SCU2992现有n个物品，每个物品有两个权值a和b，现要从中选出k件物品，使得$\frac{\sum_{i=0}^k a_i}{\sum_{i=0}^k b_i}$ 的值最大。 分析不妨设$$A = \sum_{i=0}^k a_i, B = \sum_{i=0}^k b_i, ans = \frac{A}{B}$$ 那么 $$ A-ans*B = 0 $$ 展开，得每个物品的贡献为$$a_i-ans*b_i$$ 然后排个序，取出贡献最高的前k件物品，累加得到一个贡献和$total$，若$total \leq 0$，则ans可以向左侧移动，否则向右侧移动。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;template&lt;typename T&gt;ostream&amp; operator &lt;&lt; (ostream&amp; os, const vector&lt;T&gt;&amp; v)&#123; for(auto i : v) os &lt;&lt; i &lt;&lt; " "; return os;&#125;template&lt;typename T&gt;ostream&amp; operator &lt;&lt; (ostream&amp; os, const set&lt;T&gt;&amp; v)&#123; for(auto i : v) os &lt;&lt; i &lt;&lt; " "; return os;&#125;template&lt;typename T&gt;inline T read()&#123; T sgn = 1, res = 0; char c = getchar(); while(c &lt; '0' || c &gt; '9') &#123; if(c == '-') sgn = -sgn; c = getchar(); &#125; while('0' &lt;= c &amp;&amp; c &lt;= '9') &#123; res = res * 10 + c - '0'; c = getchar(); &#125; return res * sgn;&#125;const double EPS = 1e-4;const int N = 1e4 + 233;ll a[N], b[N];double f[N];int n, k;bool chck(double x)&#123; ll sa = 0; ll sb = 0; for(int i = 0; i &lt; n; ++i) f[i] = 1.0 * (a[i] - b[i] * x); sort(f, f+n, greater&lt;double&gt;()); double res = 0.0; for(int i = 0; i &lt; n-k; ++i) res += f[i]; return res &gt; 0;&#125;// #define localint main()&#123;#ifdef local freopen("data.in", "r", stdin); freopen("ans.out", "w", stdout);#endif while(~scanf("%d%d", &amp;n, &amp;k)) &#123; if(n == 0 &amp;&amp; k == 0) break; for(int i = 0; i &lt; n; ++i) a[i] = read&lt;ll&gt;(); for(int i = 0; i &lt; n; ++i) b[i] = read&lt;ll&gt;(); double l = 0.0; double r = 1.0; while(r-l &gt;= EPS) &#123; double mid = (l+r) / 2.0; if(chck(mid)) l = mid; else r = mid; &#125; printf("%d\n", static_cast&lt;int&gt;(round(100.0 * l))); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>ACM</category>
+      </categories>
+      <tags>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网络流24题(Part.2)]]></title>
+    <url>%2F2019%2F04%2F12%2FNetFlow24-2%2F</url>
+    <content type="text"><![CDATA[这里是网络流24题建图的方法（题目来自洛谷）包含：P2763, P2764 网络流24题(Part.2)洛谷P2763此题为MaxFlow 对于每一道题，在它和它的所有适用类型之间连边 新建一个超级源点，将它和所有题目相连 新建一个超级汇点，将所有类型和它相连 打印方案遍历边集 当且仅当流向汇点的弧不满载时无解 洛谷P2764此题为MaxFlow建图方式题面已经给出，简单概括一下： 搞成二分图 给出的所有边改为在左集和右集之间连接 另建源点与左集，汇点与右集相连 打印方案时，在找到增广路之后记录一下路径即可 Tips贴个结论：最小路径覆盖数目 = 顶点数 - 最大匹配]]></content>
+      <categories>
+        <category>ACM</category>
+      </categories>
+      <tags>
+        <tag>Dinic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[网络流24题(Part.1)]]></title>
-    <url>%2F2019%2F04%2F10%2FNetFlow24_1%2F</url>
+    <url>%2F2019%2F04%2F10%2FNetFlow24-1%2F</url>
     <content type="text"><![CDATA[这里是网络流24题建图的方法（题目来自洛谷）包含：P1251, P2754, P2756, P2761, P2762 网络流24题(Part.1)洛谷P1251此题为MCMF首先，将一天拆成晚上和早上，每天晚上会受到脏餐巾（来源：当天早上用完的餐巾，在这道题中可理解为从原点获得），每天早上又有干净的餐巾（来源：购买、快洗店、慢洗店。） 从原点向每一天晚上连一条流量为当天所用餐巾x，费用为0的边，表示每天晚上从起点获得x条脏餐巾。 从每一天早上向汇点连一条流量为当天所用餐巾x，费用为0的边，每天白天,表示向汇点提供x条干净的餐巾,流满时表示第i天的餐巾够用。 从每一天晚上向第二天晚上连一条流量为INF，费用为0的边，表示每天晚上可以将脏餐巾留到第二天晚上（注意不是早上，因为脏餐巾在早上不可以使用）。 从每一天晚上向这一天+快洗所用天数$t_1$的那一天早上连一条流量为INF，费用为快洗所用钱数的边，表示每天晚上可以送去快洗部,在地$i+t_1$天早上收到餐巾。 同理，从每一天晚上向这一天+慢洗所用天数$t_2$的那一天早上连一条流量为INF，费用为慢洗所用钱数的边，表示每天晚上可以送去慢洗部,在地$i+t_2$天早上收到餐巾 。 从起点向每一天早上连一条流量为INF，费用为购买餐巾所用钱数的边，表示每天早上可以购买餐巾。 洛谷P2754此题为MaxFlow将每一个星球按时间拆点，不妨将第i个星球在第j时刻的状态表示为$(i, j)$，$path_{i, j}$表示第i艘飞船当前在第j站，第i艘飞船的运行周期为$t_i$。则有： 首先判断时候存在解（并查集），若不存在，判0结束。否则执行下面的步骤： 由于每个星球上的人有两个选择：要么上飞船（如果有），要么等一个单位的时间。所以建两条边$(path_{i, j}, j) \rightarrow (path_{i, (j+1) \% t_i}, j+1)$，$(i, j) \rightarrow (i, j+1)$。 在当前时刻j，建立一条从源点到起点（地球）的边，即：$Source\rightarrow (earth, j)$ 在当前时刻j，建立一条从终点（月球）到汇点的边，即：$(moon, j)\rightarrow Sink$ 一旦此网络的流量等于k，结束加边过程，给出答案。 Tips 这题需要一边加边一边跑最大流，即：每增加一次当前时刻，加边，然后跑最大流 每次跑最大流时，在上次残量网络的基础上跑（千万不要清空残量网络） 洛谷P2756此题为MaxFlow(二分图) 整一个超级源点和超级汇点，超级源点连左集中所有节点，右集所有节点连向超级汇点；然后就按题目给的边连上就行。 跑Dinic，完了以后检索边集，发现有流量的边就输出。（注意下不要把含有源点和汇点的输出来） 洛谷P2761此题为状压、SPFA(什么鬼?) 可以将每个状态用一个整数表示$(n \leq 20)$ 没有必要把所有边全部存下来，只需要在跑SPFA时确定是否能够转移即可。 洛谷P2762此题为最小割-最大流定理 建边：$S \rightarrow E_i, E_i \rightarrow I_j, I_j \rightarrow T$(其中S为源点，$E_i$为第i个实验，$I_i$为第i件设备) 建好的图大概是这样：（图片由SSL_XXY_BlackCloud$julao$制作） 最终答案为最后一次BFS是仍然能够访问到的点（其他节点都被割掉了）]]></content>
       <categories>
         <category>ACM</category>
@@ -72,10 +94,5 @@
         <tag>数据结构</tag>
         <tag>区间维护</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F03%2F24%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
