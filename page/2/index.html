@@ -96,28 +96,23 @@
 
 
 
-  <meta name="description" content="Manacher算法是查找一个字符串的最长回文子串的线性算法。其时间复杂度为$O(n)$">
-<meta name="keywords" content="算法,字符串">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ManaCher算法">
-<meta property="og:url" content="http://yoursite.com/2019/03/25/ManaCher/index.html">
+  <meta name="description" content="一条咸鱼">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Adiaoer">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Adiaoer">
-<meta property="og:description" content="Manacher算法是查找一个字符串的最长回文子串的线性算法。其时间复杂度为$O(n)$">
+<meta property="og:description" content="一条咸鱼">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/manacher/1.jpg">
-<meta property="og:image" content="http://yoursite.com/images/manacher/2.jpg">
-<meta property="og:updated_time" content="2019-04-04T13:43:11.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ManaCher算法">
-<meta name="twitter:description" content="Manacher算法是查找一个字符串的最长回文子串的线性算法。其时间复杂度为$O(n)$">
-<meta name="twitter:image" content="http://yoursite.com/images/manacher/1.jpg">
+<meta name="twitter:title" content="Adiaoer">
+<meta name="twitter:description" content="一条咸鱼">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/25/ManaCher/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
@@ -127,7 +122,7 @@
   };
 </script>
 
-  <title>ManaCher算法 | Adiaoer</title>
+  <title>Adiaoer</title>
   
 
 
@@ -185,7 +180,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -323,9 +319,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -340,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/ManaCher/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/ODT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Adiaoer">
@@ -357,8 +353,17 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ManaCher算法
-
+          <h1 class="post-title" itemprop="name headline">
+              <!-- 自定义，用于添加摘要图片，稳重不显示 -->
+                
+                  <div class="out-img-topic">
+                    <img src="/images/Cover/ODT.png" class="img-topic">
+                  </div>
+                
+              <!-- 自定义结束 -->
+                
+                
+                <a href="/2019/03/24/ODT/" class="post-title-link" itemprop="url">老司机树</a>
               
             
           </h1>
@@ -383,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2019-03-25 12:45:36" itemprop="dateCreated datePublished" datetime="2019-03-25T12:45:36+08:00">2019-03-25</time>
+              <time title="创建时间：2019-03-24 20:28:30" itemprop="dateCreated datePublished" datetime="2019-03-24T20:28:30+08:00">2019-03-24</time>
             
 
             
@@ -400,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-04 21:43:11" itemprop="dateModified" datetime="2019-04-04T21:43:11+08:00">2019-04-04</time>
+                <time title="修改时间：2019-04-04 11:53:28" itemprop="dateModified" datetime="2019-04-04T11:53:28+08:00">2019-04-04</time>
               
             
           </span>
@@ -434,13 +439,6 @@
           
 
           
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             阅读次数： 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
 
           
 
@@ -459,27 +457,20 @@
       
 
       
-        <p>Manacher算法是查找一个字符串的最长回文子串的线性算法。其时间复杂度为$O(n)$</p>
-<a id="more"></a>
-<h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><p>由于存在奇回文与偶回文两种类型的回文串，分开判断较为复杂，所以将二者全部处理成奇回文。(以下内容来自<a href="https://codeforces.com/profile/sundes" target="_blank" rel="noopener">Sundes</a>大佬的PPT)</p>
-<blockquote>
-<p>考虑将原字符串StrA进行预处理，不妨在字符串首尾位置以及任意两字符之间插入一个原本不存在于StrA中的字符。得到字符串StrB，经过这样处理后所有的回文都变成了奇回文，且回文性质不变。<br>如:<br>$$bob     –&gt;     #b#o#b#$$<br>$$noon     –&gt;     #n#o#o#n#$$<br>$$level     –&gt;     #l#e#v#e#l#$$<br>由于第一个和最后一个字符都是#号，且也需要搜索回文，为了防止越界，我们还需要在首尾再加上非#号字符，实际操作时我们只需给开头加上个非#号字符，结尾不用加的原因是字符串的结尾标识为’\0’，等于默认加过了。<br>不妨在字符串首插入字符’\$’<br>$$bob     –&gt;     $#b#o#b#$$<br>$$noon     –&gt;     $#n#o#o#n#$$<br>$$level     –&gt;     $#l#e#v#e#l#$$<br>通过以上预处理，字符串StrA转化为了字符串StrB。</p>
-</blockquote>
-<blockquote>
-<p>记数组p[max_len]，p[i]表示StrB以i位置的字符为中心点，最长回文子串的半径大小 (即回文长度(len-1)/2) ，注意max_len最少应为原字符串StrA长度两倍加一。<br>通过p数组我们就可以找到其最大值和其位置，就能确定最长回文子串了，那么下面我们就来看如何求p数组，需要新增两个辅助变量mx和id，其中id为最大回文子串中心的位置，mx是回文串能延伸到的最右端的位置。(即id+p[id])<br>这个算法的最核心的一行如下：<br>$$p[i] = mx &gt; i ? min(p[2 * id - i], mx - i) : 1;$$</p>
-</blockquote>
-<blockquote>
-<p>下面详细介绍该转移方程的内涵<br>当 mx - i &gt; p[j] 的时候，以StrB[j]为中心的回文子串包含在以StrB[id]为中心的回文子串中，由于 i 和 j 对称，以StrB[i]为中心的回文子串必然包含在以StrB[id]为中心的回文子串中，所以必有 $P[i] = P[j]$，见下图。<br><img src="/images/manacher/1.jpg" alt></p>
-</blockquote>
-<blockquote>
-<p>当 $P[j] &gt;= mx - i$ 的时候，以StrB[j]为中心的回文子串不完全包含于以StrB[id]为中心的回文子串中，但是基于对称性可知，下图中两个绿框所包围的部分是相同的，也就是说以StrB[i]为中心的回文子串，其向右至少会扩张到mx的位置，也就是说 $P[i] &gt;= mx - i$。至于mx之后的部分是否依旧对称，则需要朴素的对比。<br>在此过程中维护mx与id。（若回文串能延伸到的最右端的位置大于mx，则修改mx与id）<br><img src="/images/manacher/2.jpg" alt></p>
-</blockquote>
-<blockquote>
-<p>对于 $mx &lt;= i$ 的情况，无法对 P[i]做更多的假设，只能$P[i] = 1$，然后再去匹配了。<br>由于每一个位置最多只会被朴素的匹配一次，所以算法复杂程度$O(n)$;</p>
-</blockquote>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><a href="https://paste.ubuntu.com/p/2r4Gr8KgnD/" target="_blank" rel="noopener">代码</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">manacher</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> maxr = <span class="number">0</span>, mid = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; maxr)</span><br><span class="line">            val[i] = min(val[(mid&lt;&lt;<span class="number">1</span>) - i], maxr-i);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            val[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[i-val[i]] == s[i+val[i]])</span><br><span class="line">            val[i]++;</span><br><span class="line">        <span class="keyword">if</span>(val[i] + i &gt; maxr)</span><br><span class="line">        &#123;</span><br><span class="line">            maxr = val[i] + i;</span><br><span class="line">            mid = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, val[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (*max_element(val, val+len)) - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p>老司机树(ODT，又名Chtholly Tree，珂朵莉树), 由<a href="https://codeforces.com/profile/ODT" target="_blank" rel="noopener">ODT</a>大佬提出。<br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/24/ODT/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
       
-    </div>
+    </p></div>
 
     
 
@@ -498,42 +489,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-            <a href="/tags/字符串/" rel="tag"># 字符串</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/24/ODT/" rel="next" title="老司机树">
-                <i class="fa fa-chevron-left"></i> 老司机树
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/28/Splay-Tree/" rel="prev" title="Splay树">
-                Splay树 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -543,15 +506,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -571,17 +537,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -683,23 +640,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法介绍"><span class="nav-number">1.</span> <span class="nav-text">算法介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -858,10 +798,6 @@
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
 
   
 
@@ -878,8 +814,6 @@
   
 
 
-  
-
 
   
 
@@ -894,6 +828,10 @@
   
 
   
+  
+    
+      
+    
   
 
   
